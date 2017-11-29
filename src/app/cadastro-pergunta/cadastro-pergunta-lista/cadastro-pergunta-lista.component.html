@@ -1,0 +1,6 @@
+<h1>Lista de perguntas</h1>
+<ul>
+  <li *ngFor="let p of perguntas | async">
+    {{ p.pergunta + ' ' + p.resposta }}
+  </li>
+</ul>
