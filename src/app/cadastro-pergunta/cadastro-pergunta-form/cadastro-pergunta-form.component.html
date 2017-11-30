@@ -1,4 +1,6 @@
 <h1> Cadastro de Perguntas</h1>
+
+<button (click)="form_logout()" type="button"> Deslogar</button>
 <form #f="ngForm" (submit)="form_submit(f)">
 <input type="text" ngModel name="pergunta" placeholder="Pergunta">
 <br />
@@ -6,8 +8,3 @@
 <br />
 <button type="submit">Cadastrar</button>
 </form>
-<ul>
-    <li *ngFor="let p of perguntas">
-    {{ p.pergunta + ' ' + p.resposta}}
-    </li>
-</ul>

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
+import { PerguntaService } from '../../pergunta.service';
+
 @Component({
   selector: 'app-cadastro-pergunta-lista',
   templateUrl: './cadastro-pergunta-lista.component.html',
@@ -12,11 +14,11 @@ export class CadastroPerguntaListaComponent implements OnInit {
 
   perguntas: Observable<any[]>;
 
-  constructor(db: AngularFireDatabase) {
-    this.perguntas = db.list('perguntas').valueChanges();
+  constructor(private perguntaService: PerguntaService) {
+    this.perguntas = this.perguntaService.getTodasPerguntas()
   }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
 }

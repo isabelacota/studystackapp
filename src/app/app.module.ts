@@ -7,8 +7,15 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2/index';
 import { FirebaseConfig } from './../environments/firebase.config';
+import { AngularFirestoreModule  } from 'angularfire2/firestore';
+
+import { AppRoutingModule } from './app.routing.module';
 
 import { CadastroPerguntaModule } from './cadastro-pergunta/cadastro-pergunta.module';
+import { LoginModule } from './login/login.module';
+
+import { AuthGuard } from './auth.service';
+import { PerguntaService } from './pergunta.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +26,12 @@ import { CadastroPerguntaModule } from './cadastro-pergunta/cadastro-pergunta.mo
     FormsModule,
     HttpModule,
     CadastroPerguntaModule,
-    AngularFireModule.initializeApp(FirebaseConfig)
+    AngularFireModule.initializeApp(FirebaseConfig),
+    AppRoutingModule,
+    LoginModule,
+    AngularFirestoreModule.enablePersistence()
   ],
-  providers: [],
+  providers: [AuthGuard, PerguntaService, AngularFirestoreModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
