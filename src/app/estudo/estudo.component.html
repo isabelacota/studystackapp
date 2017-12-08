@@ -1,0 +1,46 @@
+<h1>Lista de perguntas</h1>
+
+<div class="form-group">    
+  <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Discipina
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+          <li *ngFor="let d of disciplinas | async" (click)="onSelectDisciplina(d)">
+              {{d.nome}}
+          </li>
+      </ul>
+  </div>    
+</div>
+
+<div class="form-group">    
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dificuldade
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li *ngFor="let d of options" (click)="onSelectDificuldade(d)">
+                {{d}}
+            </li>
+        </ul>
+    </div>    
+</div>
+
+
+<div class="form-group">
+    <label for="pwd">Disciplina</label>  
+    <input type="text" [disabled]="true" class="form-control" [(ngModel)]="disciplina_nome" name="disciplina_nome">        
+</div>
+
+<div class="form-group">
+    <label for="pwd">Dificuldade</label>  
+    <input type="text" [disabled]="true" class="form-control" [(ngModel)]="dificuldade" name="dificuldade">        
+</div>
+
+
+<ul>
+  <li *ngFor="let p of perguntas | async; let i = index">
+    <div class="pergunta">{{i+1}}. {{ p.pergunta}}</div>
+    <div id="{{p.id}}" class="collapse">{{ p.resposta }}</div>
+    <a href="#{{p.id}}" class="btn btn-info" data-toggle="collapse"> Mostrar Resposta</a>
+    <br><br>
+  </li>
+</ul>

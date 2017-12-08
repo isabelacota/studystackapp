@@ -16,10 +16,16 @@ import { LoginModule } from './login/login.module';
 
 import { AuthGuard } from './auth.service';
 import { PerguntaService } from './pergunta.service';
+import { MenuComponent } from './menu/menu.component';
+import { EstudoComponent } from './estudo/estudo.component';
+import { CopiarPerguntasFormComponent } from './copiar-perguntas-form/copiar-perguntas-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    EstudoComponent,
+    CopiarPerguntasFormComponent
   ],
   imports: [
     BrowserModule,

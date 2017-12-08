@@ -22,7 +22,7 @@ export class LoginFormComponent implements OnInit {
     
     this.afAuth.auth.signInWithEmailAndPassword(f.controls.email.value, f.controls.senha.value)
       .then(ok => {
-        this.router.navigate(["/cadastro"]);
+        this.router.navigate(["/menu"]);
       });
     f.controls.email.setValue('');
     f.controls.senha.setValue(''); 

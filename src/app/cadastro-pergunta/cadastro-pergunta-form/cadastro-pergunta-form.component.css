@@ -1,0 +1,17 @@
+input[type='text'], input[type='number'], button, h1, label, textarea {
+    margin: 10px;
+}
+
+input[type='number'], textarea, button {
+    display: block;
+}
+
+textarea{
+    width: 1000px;
+    height: 100px;
+    resize: none;
+}
+
+.form-control {
+    width: 250px;
+}

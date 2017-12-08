@@ -1,0 +1,22 @@
+<h1> Copiar Perguntas</h1>
+
+<div class="form-group">    
+  <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Destino
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+          <li *ngFor="let d of disciplinas | async" (click)="onSelectDestino(d)">
+              {{d.nome}}
+          </li>
+      </ul>
+  </div>    
+</div>
+
+<div class="form-group">
+  <label for="pwd">Destino</label>  
+  <input type="text" [disabled]="true" class="form-control" [(ngModel)]="destino" name="destino">        
+</div>
+
+<form #f="ngForm" (submit)="form_submit(f)">
+<button type="submit">Copiar</button>
+</form>

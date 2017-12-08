@@ -1,8 +1,11 @@
-<h1>Login</h1>
+<img src="/assets/images/launcher-icon-1x.png" >
+<h1>StudyStackApp</h1>
+<div class="login-form">
 <form #f="ngForm" (submit)="form_login(f)">
-  <input type="text" required ngModel name="email" placeholder="Email">
-  <br />
-  <input type="password" required ngModel name="senha" placeholder="Senha">
-  <br />
-  <button type="submit">Logar</button>
+  <label>Email</label>
+  <input type="text" required ngModel name="email">
+  <label>Senha</label>
+  <input type="password" required ngModel name="senha">
+  <button type="submit">Entrar</button>
 </form>
+</div>

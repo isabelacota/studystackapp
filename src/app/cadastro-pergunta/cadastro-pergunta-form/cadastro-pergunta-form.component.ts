@@ -2,11 +2,9 @@ import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database';
-
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
-
 import { PerguntaService } from '../../pergunta.service';
+
+import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'app-cadastro-pergunta-form',
@@ -16,27 +14,38 @@ import { PerguntaService } from '../../pergunta.service';
 
 export class CadastroPerguntaFormComponent implements OnInit {
 
+  disciplinas: Observable<any[]>
+
+  disciplina_nome: string;
+  disciplina_id: string;
+
+  dificuldade: number;
+  comentario: string;
+
   constructor( 
     private angularFire: AngularFireDatabase,
-    private afAuth: AngularFireAuth,
-    private router: Router,
     private perguntaService: PerguntaService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {  
+    this.disciplinas = this.perguntaService.getTodasDisciplinas() 
   }
+
+  onSelectDisciplina(d): void {
+    this.disciplina_nome= d.nome;
+    this.disciplina_id = d.id;
+    console.log('Selecionada disciplina', this.disciplina_id);
+  } 
 
   form_submit(f: NgForm) {
 
-    this.perguntaService.setPergunta(f.controls.pergunta.value, f.controls.resposta.value);
+    this.perguntaService.setPergunta(f.controls.pergunta.value, f.controls.resposta.value, f.controls.dificuldade.value, 
+              f.controls.comentario.value, this.disciplina_id);
 
     f.controls.pergunta.setValue('');
     f.controls.resposta.setValue('');
-  }
+    //f.controls.dificuldade.setValue('');
+    f.controls.comentario.setValue('');
 
-  form_logout() {
-    this.afAuth.auth.signOut();
-    this.router.navigate([""]);
   }
-
 }

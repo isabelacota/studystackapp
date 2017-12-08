@@ -1,2 +1,4 @@
+<button *ngIf="(this.router.url != '/login')" (click)="form_logout()" type="button"> Deslogar</button>
+<button *ngIf="(this.router.url != '/login' && this.router.url != '/menu')" (click)="menu()" type="button"> Voltar</button><br><br>
 <router-outlet></router-outlet>
 
